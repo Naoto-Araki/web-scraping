@@ -5,7 +5,7 @@ import pandas as pd
 
 # requestsでurlにアクセスしてHTML解析
 # 福岡市の中古マンションSUUMOサイト
-url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40131&sc=40132&sc=40133&sc=40134&sc=40135&sc=40136&sc=40137&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&page={}'
+url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40131&sc=40132&sc=40133&sc=40134&sc=40135&sc=40136&sc=40137&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
 
 d_list = []
 
@@ -21,16 +21,16 @@ page_tag = page_tags.find_all('li')[10]
 page_numbers = page_tag.text  # ページ番号を文字列で取得
 page_numbers = int(page_numbers)  # 整数に変換
 page_numbers = page_numbers + 1  # ページ番号を1増加
-#print(page_numbers)
+
+print(f"総ページ数: {page_numbers}")
 
 for i in range(1, page_numbers):
-    print('d_listの大きさ', len(d_list))
-
+    print(f'処理中のページ: {i}')
     target_url = url.format(i)
     #print(taget_url)
 
     r = requests.get(target_url)
-    soup = BeautifulSoup(r.text)
+    soup = BeautifulSoup(r.text, 'html.parser')
 
     # サーバーに負荷をかけないため
     sleep(1)
@@ -45,10 +45,10 @@ for i in range(1, page_numbers):
         href = a.get('href')
         detail_link = 'https://suumo.jp' + href + 'bukkengaiyo/?fmlg=t001'
 
-        print(detail_link)
+        # print(detail_link)
 
         r_child = requests.get(detail_link)
-        soup_child = BeautifulSoup(r_child.text)
+        soup_child = BeautifulSoup(r_child.text, 'html.parser')
 
         # サーバーに負荷をかけないために
         sleep(1)
