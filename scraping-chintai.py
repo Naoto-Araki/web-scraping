@@ -92,7 +92,7 @@ for i in range(1, page_numbers):
                 soup_child = BeautifulSoup(r_child.text, 'html.parser')
 
                 contents_child = soup_child.find_all('div', class_='section l-space_small')
-                if len(contents_child) > 1:
+                if len(contents_child) > 1: # 0の方がいいかも (時間があれば再実行)
                     content_child = contents_child[1]
                     table_child = content_child.find('table', class_='data_table table_gaiyou')
                     structure, floors, year = table_child.find_all('td')[1:4]
