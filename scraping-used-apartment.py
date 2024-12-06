@@ -5,7 +5,24 @@ import pandas as pd
 
 # requestsでurlにアクセスしてHTML解析
 # 博多区の中古マンションSUUMOサイト
-url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40131&sc=40132&sc=40133&sc=40134&sc=40135&sc=40136&sc=40137&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
+url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40132&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
+# 東区の中古マンションSUUMOサイト
+# url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40131&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
+
+# 中央区の中古マンションSUUMOサイト
+# url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40133&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
+
+# 南区の中古マンションSUUMOサイト
+# url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40134&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
+
+# 西区の中古マンションSUUMOサイト
+# url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40135&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
+
+# 城南区の中古マンションSUUMOサイト
+# url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40136&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
+
+# 早良区の中古マンションSUUMOサイト
+# url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40137&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
 
 d_list = []
 
@@ -85,3 +102,8 @@ for i in range(1, page_numbers):
 df = pd.DataFrame(d_list)
 
 df.to_csv('used_apartment_hakata.csv', index=None, encoding='utf-8-sig')
+# df.to_csv('used_apartment_higashi.csv', index=None, encoding='utf-8-sig')
+# df.to_csv('used_apartment_chuo.csv', index=None, encoding='utf-8-sig')
+# df.to_csv('used_apartment_nishi.csv', index=None, encoding='utf-8-sig')
+# df.to_csv('used_apartment_zyounan.csv', index=None, encoding='utf-8-sig')
+# df.to_csv('used_apartment_sawara.csv', index=None, encoding='utf-8-sig')
