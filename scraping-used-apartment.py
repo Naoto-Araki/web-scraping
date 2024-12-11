@@ -5,12 +5,12 @@ import pandas as pd
 
 # requestsでurlにアクセスしてHTML解析
 # 博多区の中古マンションSUUMOサイト
-url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40132&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
+# url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40132&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
 # 東区の中古マンションSUUMOサイト
 # url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40131&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
 
 # 中央区の中古マンションSUUMOサイト
-# url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40133&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
+url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40133&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
 
 # 南区の中古マンションSUUMOサイト
 # url = 'https://suumo.jp/jj/bukken/ichiran/JJ010FJ001/?ar=090&bs=011&ta=40&jspIdFlg=patternShikugun&sc=40134&kb=1&kt=9999999&mb=0&mt=9999999&ekTjCd=&ekTjNm=&tj=0&cnb=0&cn=9999999&srch_navi=1&page={}'
@@ -72,7 +72,7 @@ for i in range(1, page_numbers):
             # soup_childから情報を取得
             contents_child = soup_child.find_all('div', class_='secTitleOuterR') or soup_child.find_all('div', class_='secTitleOuterK')
             
-            if len(contents_child) > 1:
+            if len(contents_child) > 0:
                 content_child = contents_child[0]
                 title = content_child.find('h3', class_='secTitleInnerR') or content_child.find('h3', class_='secTitleInnerK')
                 tables_child = soup_child.find_all('table', class_='mt10 bdGrayT bdGrayL bgWhite pCell10 bdclps wf')
@@ -101,9 +101,10 @@ for i in range(1, page_numbers):
 
 df = pd.DataFrame(d_list)
 
-df.to_csv('used_apartment_hakata.csv', index=None, encoding='utf-8-sig')
+# df.to_csv('used_apartment_hakata.csv', index=None, encoding='utf-8-sig')
 # df.to_csv('used_apartment_higashi.csv', index=None, encoding='utf-8-sig')
-# df.to_csv('used_apartment_chuo.csv', index=None, encoding='utf-8-sig')
+df.to_csv('used_apartment_chuo.csv', index=None, encoding='utf-8-sig')
+# df.to_csv('used_apartment_minami.csv', index=None, encoding='utf-8-sig')
 # df.to_csv('used_apartment_nishi.csv', index=None, encoding='utf-8-sig')
 # df.to_csv('used_apartment_zyounan.csv', index=None, encoding='utf-8-sig')
 # df.to_csv('used_apartment_sawara.csv', index=None, encoding='utf-8-sig')
